@@ -68,21 +68,25 @@ let increment = (id) =>{
     else{
         search.item += 1;
     }
-    localStorage.setItem("data", JSON.stringify(basket));
     //console.log(basket);
     update(selectedItem.id);
+    localStorage.setItem("data", JSON.stringify(basket));
 };
 let decrement = (id) =>{
     let selectedItem = id;
     let search = basket.find((x)=> x.id === selectedItem.id);
+    if (search.item === undefined)
+        return;
     if(search.item === 0)
         return;
     else{
         search.item -= 1;
     }
     //console.log(basket);
-    localStorage.setItem("data", JSON.stringify(basket));
     update(selectedItem.id);
+    
+    basket = basket.filter((x)=> x.item !== 0);
+    localStorage.setItem("data", JSON.stringify(basket));
 };
 
 //update function 
@@ -97,3 +101,5 @@ let calculation = ()=>{
     let carticon = document.getElementById("cartamount");
     carticon.innerHTML =  basket.map((x)=>x.item).reduce((x, y)=> x+y, 0);
 }
+
+calculation();
