@@ -25,6 +25,10 @@
 i{
     cursor: pointer;
 }
+a{
+    text-decoration: none;
+    color: antiquewhite;
+}
 .cartamount{
     font-size: 15px;
     background-color: red;
@@ -84,4 +88,21 @@ i{
 }
 .bi-plus-lg{
     color: green;
+}
+
+/**
+    styles for label and button
+**/
+.text-center{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.HomeBtn{
+    background-color: #141414;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    cursor: pointer;
+    margin-top: 10px;
 }
