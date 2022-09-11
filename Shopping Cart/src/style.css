@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -44,6 +45,7 @@ a{
     grid-template-columns: repeat(4, 252px) !important;
     gap: 20px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 @media (max-width: 1000px)
 {
@@ -63,6 +65,10 @@ a{
     border: 2px solid #141414;
     border-radius: 4px;
 
+}
+.item img{
+    width: 100%;
+    border-radius: 2px 2px 0 0;
 }
 .details{
     display: flex;

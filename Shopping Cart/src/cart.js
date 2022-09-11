@@ -14,14 +14,15 @@ let generatecartItems = ()=>{
         return (shoppingcart.innerHTML  = basket.map((x)=>{
             let {id, item} = x;
             let search = shopItemsData.find((y) => y.id === id) || [];
+            let {img, name, price} = search
             return `
             <div class="cart-item">
-                <img width = "100" height = "120" src=${search.img} alt=""/>
+                <img width = "100" height = "120" src=${img} alt=""/>
                 <div class ="details">
                     <div class="tiile-price-x">
                         <h4 class="title-price">
-                            <p>${search.name}</p>
-                            <p class="cart-item-price">$ ${search.price}</p>
+                            <p>${name}</p>
+                            <p class="cart-item-price">$ ${price}</p>
                         </h4>
                         <i class="bi bi-x-lg" onclick="removeitem(${id})"></i>
                     </div>
@@ -96,10 +97,20 @@ let removeitem = (id)=>{
     let selectedItem = id
     //console.log(selectedItem.id);
     basket = basket.filter((x)=>x.id !== selectedItem.id);
-    localStorage.setItem("data", JSON.stringify(basket));
     generatecartItems();
     totalamount();
+    calculation();
+    localStorage.setItem("data", JSON.stringify(basket));
 }
+
+let clearcart = (id) =>{
+    basket = [];
+    generatecartItems();
+    calculation();
+    localStorage.setItem("data", JSON.stringify(basket));
+
+}
+
 
 let totalamount = ()=>{
     if(basket.length !== 0)
@@ -112,8 +123,7 @@ let totalamount = ()=>{
         //console.log(amount);
         label.innerHTML = `<h2>Total Bill : $ ${amount} </h2>
         <button class = "checkout">Checkout</button>
-        <button class = "removeall">Clear Cart</button>`;
-        
+        <button class = "removeall" onclick = "clearcart()">Clear Cart</button>`;  
     }
     else
         return 
